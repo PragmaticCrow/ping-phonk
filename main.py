@@ -145,8 +145,7 @@ while running:
     pygame.draw.rect(screen,opponent_color, opponent)
     pygame.draw.ellipse(screen,ball_color, ball)
     pygame.draw.rect(screen,player_color, player)
-    
 
-    #update de window (fps)
+    #! Update de window (fps)
     pygame.display.flip()
     clock.tick(60)
