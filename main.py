@@ -11,8 +11,8 @@ def ball_animation():
     if ball.top <= 0 or ball.bottom >= screenHeight:
         ball_speed_y *= -1
     if ball.left <= 0 or ball.right >= screenWidth:
-        ball_speed_x = 7
         general_speed = -2
+        ball_speed_x = 7
         ball_restart()
     #* Collitions
     if ball.colliderect(player) or ball.colliderect(opponent):
@@ -38,19 +38,19 @@ def opponent_animation():
     if opponent.top <= 0:
         opponent.top = 0 
     if opponent.bottom >= screenHeight:
-        opponent.bottom = screenHeight 
-    # #* Opponent Follow the Ball (BOT AI)
-    # if opponent.top < ball.y:
-    #     opponent.top += opponent_speed
-    # if opponent.bottom > ball.y:
-    #     opponent.bottom -= opponent_speed
+        opponent.bottom = screenHeight
+   
 #? Center ball to the center when his x <= 0 or x <= width
 def ball_restart():
-    global ball_speed_y, ball_speed_x
+    global ball_speed_y, ball_speed_x, randomDirection, general_speed
     ball.center = center
     ball_speed_y *= random.choice((1,-1))
-
-
+    randomDirection = random.choice((1,-1))
+    if randomDirection == -1:
+        general_speed = 2
+    ball_speed_x *= randomDirection
+    
+#! Start pygame 
 pygame.init()
 clock = pygame.time.Clock()
 
